@@ -13,12 +13,21 @@ app.listen(8080, (req, res) => {
 });
 
 app.get("/api", (req, res) => {
-  const randomMovie = parseInt(Math.random() * Object.keys(data).length);
-  const randomQuote = parseInt(
-    Math.random() * Object.keys(data[Object.keys(data)[randomMovie]]).length - 1
+  const dataLength = Object.keys(data).length;
+
+  const randomMovie = parseInt(Math.random() * dataLength);
+
+  const quotesLength = parseInt(
+    Object.keys(data[Object.keys(data)[randomMovie]]).length
   );
+
+  console.log(quotesLength);
+
+  const randomQuote = parseInt(Math.random() * Object.keys(quotesLength - 1));
+
   res.json({
     movie_name: Object.keys(data)[randomMovie],
+    movie_thumb: data[Object.keys(data)[randomMovie]]["img_src"],
     quote: data[Object.keys(data)[randomMovie]][randomQuote],
   });
 });
