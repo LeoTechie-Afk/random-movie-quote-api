@@ -1,4 +1,4 @@
 # Files
-*.json
+quotes.json
 # Folders
 node_modules/
